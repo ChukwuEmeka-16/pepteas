@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { CartItem, Transaction, UserProfile, Page, Product } from "./types";
-//import { MOCK_USERS } from "./data";
 import ProductsPage from "./ProductsPage";
 import ProfilePage from "./ProfilePage";
 import TransactionHistory from "./TransactionHistory";
