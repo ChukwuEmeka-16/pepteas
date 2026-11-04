@@ -108,7 +108,7 @@ interface Props {
   onNavigate: (page: Page) => void;
 }
 
-export default function ProductsPage({ products,cart,checkoutStep,cartTotal, prices, onAddToCart,removeFromCart, cartCount, onBack, onNavigate,setCheckoutStep }: Props) {
+export default function ProductsPage({ products,cart,checkoutStep,cartTotal, prices, onAddToCart,removeFromCart, cartCount, onBack, onNavigate,setCheckoutStep }: any) {
   const {userState} = useAuth();
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
@@ -116,9 +116,9 @@ export default function ProductsPage({ products,cart,checkoutStep,cartTotal, pri
   const [cartOpen,setCartOpen] = useState(false)
 
   const filtered = products
-    .filter((p) => category === "All" || p.category === category)
-    .filter((p) => search === "" || p.name.toLowerCase().includes(search.toLowerCase()) || p.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())))
-    .sort((a, b) => {
+    .filter((p:any) => category === "All" || p.category === category)
+    .filter((p:any) => search === "" || p.name.toLowerCase().includes(search.toLowerCase()) || p.tags.some((t:any) => t.toLowerCase().includes(search.toLowerCase())))
+    .sort((a:any, b:any) => {
       if (sort === "asc") return a.variants[0].price - b.variants[0].price;
       if (sort === "desc") return b.variants[0].price - a.variants[0].price;
       return 0;
@@ -192,7 +192,7 @@ export default function ProductsPage({ products,cart,checkoutStep,cartTotal, pri
           <div className="text-center py-24 text-[#9e9488] text-sm">No products match your search.</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filtered.map((p) => <ProductCard key={p.id} product={p} prices={prices} onAdd={onAddToCart} />)}
+            {filtered.map((p:any) => <ProductCard key={p.id} product={p} prices={prices} onAdd={onAddToCart} />)}
           </div>
         )}
       </div>
@@ -216,7 +216,7 @@ export default function ProductsPage({ products,cart,checkoutStep,cartTotal, pri
                 <div className="flex-1 overflow-y-auto p-6 space-y-3">
                   {cart.length === 0 ? (
                     <div className="text-center py-20 text-[#9e9488] text-sm">Your cart is empty</div>
-                  ) : cart.map((item) => (
+                  ) : cart.map((item:any) => (
                     <div key={item.key} className="flex items-center justify-between bg-white border border-[#ede8da] p-4">
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-sm text-[#12302a]">{item.name}</div>

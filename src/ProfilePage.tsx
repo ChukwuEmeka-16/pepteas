@@ -44,10 +44,10 @@ function NavBar({ onBack, cartCount, onNavigate,setCartOpen}: { onBack: () => vo
   );
 }
 
-export default function ProfilePage({ onBack, cartCount, onNavigate,checkoutStep,setCheckoutStep, removeFromCart,cart,cartTotal }: Props) {
+export default function ProfilePage({ onBack, cartCount, onNavigate,checkoutStep,setCheckoutStep, removeFromCart,cart,cartTotal }: any) {
   const {userState} = useAuth()
 
-   const [form, setForm] = useState<UserProfile>({
+   const [form, setForm] = useState<any>({
     firstName: userState?.firstName ||"", lastName: userState?.lastName ||"", phoneNumber: userState?.phoneNumber ||"",
     address: userState?.address ||"", city: userState?.city ||"", state: userState?.state ||"", country: userState?.country ||"",
     dateOfBirth: userState?.dateOfBirth ||"",
@@ -59,7 +59,7 @@ export default function ProfilePage({ onBack, cartCount, onNavigate,checkoutStep
   
 
   function handleChange(field: keyof UserProfile, value: string) {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev:any) => ({ ...prev, [field]: value }));
     
   }
 
@@ -246,7 +246,7 @@ export default function ProfilePage({ onBack, cartCount, onNavigate,checkoutStep
                   <div className="flex-1 overflow-y-auto p-6 space-y-3">
                     {cart.length === 0 ? (
                       <div className="text-center py-20 text-[#9e9488] text-sm">Your cart is empty</div>
-                    ) : cart.map((item) => (
+                    ) : cart.map((item:any) => (
                       <div key={item.key} className="flex items-center justify-between bg-white border border-[#ede8da] p-4">
                         <div className="flex-1 min-w-0">
                           <div className="font-medium text-sm text-[#12302a]">{item.name}</div>

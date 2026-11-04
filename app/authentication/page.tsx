@@ -4,7 +4,6 @@ import type { UserProfile } from "../../src/types";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "firebase/firebase";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 
 
